@@ -1,10 +1,12 @@
 package org.word.utils;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -31,7 +33,7 @@ public class JsonUtils {
     }
 
     public static <T> T readValue(String jsonStr, Class<T> clazz) throws IOException {
-        return objectMapper.readValue(jsonStr, clazz);
+    	return objectMapper.readValue(jsonStr, clazz);
     }
 
     public static <T> List<T> readListValue(String jsonStr, Class<T> clazz) throws IOException {

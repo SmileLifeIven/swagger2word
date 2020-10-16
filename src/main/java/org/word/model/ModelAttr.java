@@ -74,6 +74,10 @@ public class ModelAttr implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public String toString() {
+		return "getName: " + name + ", getRequire: " + require + ", description: " + description + ", properties: " + properties.toString();
+	}
 
 	private static final long serialVersionUID = -4074067438450613643L;
 
