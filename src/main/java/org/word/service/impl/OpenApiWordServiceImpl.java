@@ -12,7 +12,7 @@ import org.word.model.ModelAttr;
 import org.word.model.Request;
 import org.word.model.Response;
 import org.word.model.Table;
-import org.word.service.WordService;
+import org.word.service.OpenApiWordService;
 import org.word.utils.JsonUtils;
 
 import java.io.IOException;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @SuppressWarnings({"unchecked", "rawtypes"})
 @Slf4j
 @Service
-public class WordServiceImpl implements WordService {
+public class OpenApiWordServiceImpl implements OpenApiWordService {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -81,7 +81,7 @@ public class WordServiceImpl implements WordService {
         Map<String, Object> map = JsonUtils.readValue(jsonStr, HashMap.class);
 
         //解析model
-        Map<String, ModelAttr> definitinMap = parseDefinitions(map);
+        Map<String, ModelAttr> definitinMap = parseComponents(map);
 
         //解析paths
         Map<String, Map<String, Object>> paths = (Map<String, Map<String, Object>>) map.get("paths");
@@ -125,7 +125,8 @@ public class WordServiceImpl implements WordService {
                     String tag = String.valueOf(content.get("operationId"));
 
                     // 6.接口描述
-                    String description = String.valueOf(content.get("description"));
+                    Object descObj = content.get("description");
+                    String description = descObj == null ? "" : descObj.toString();
 
                     // List<String> consumes = (List) content.get("consumes");
                     // if (consumes != null && consumes.size() > 0) {
@@ -163,6 +164,7 @@ public class WordServiceImpl implements WordService {
 
                     // 取出来状态是200时的返回值
                     Map<String, Object> obj = (Map<String, Object>) responses.get("200");
+                    Map<String, Object> requestBody = (Map<String, Object>) content.get("requestBody");
 
                     // 10.返回参数格式，类似于 application/json
                    List<String> responseParamsFormates = getResponseParamsFormate(obj);
@@ -178,15 +180,16 @@ public class WordServiceImpl implements WordService {
                     table.setRequestForm(requestForm);
                     table.setResponseForm(responseForm);
                     table.setRequestType(requestType);
-                    table.setRequestList(processRequestList(parameters, definitinMap));
-                    table.setResponseList(processResponseCodeList(responses));
+                    table.setRequestList(processRequestList(parameters, requestBody, definitinMap));
+
+                    table.setResponseList(processResponseCodeList(responses, definitinMap));
                     if (obj != null && obj.get("content") != null) {
                         table.setModelAttr(processResponseModelAttrs(obj, definitinMap));
                     }
 
                     //示例
                     table.setRequestParam(processRequestParam(table.getRequestList()));
-                    table.setResponseParam(processResponseParam(obj, definitinMap));
+                    table.setResponseParam(processResponseParam1(obj, definitinMap));
 
                     result.add(table);
                 }
@@ -229,7 +232,7 @@ public class WordServiceImpl implements WordService {
      * @param definitinMap
      * @return
      */
-    private List<Request> processRequestList(List<LinkedHashMap> parameters, Map<String, ModelAttr> definitinMap) {
+    private List<Request> processRequestList(List<LinkedHashMap> parameters, Map<String, Object> requestBody, Map<String, ModelAttr> definitinMap) {
         List<Request> requestList = new ArrayList<>();
         if (!CollectionUtils.isEmpty(parameters)) {
             for (Map<String, Object> param : parameters) {
@@ -269,6 +272,48 @@ public class WordServiceImpl implements WordService {
                 requestList.add(request);
             }
         }
+
+        if (requestBody != null) {
+            Map<String, Map> content = (LinkedHashMap) requestBody.get("content");
+            Iterator<Map.Entry<String, Map>> applications = content.entrySet().iterator();
+            while (applications.hasNext()) {
+                 Map.Entry<String, Map> application = applications.next();
+
+                if (application.getValue() != null) {
+                    Request request = new Request();
+
+                    Map<String, Object> schema = (Map<String, Object>) application.getValue().get("schema");
+                    request.setName(" ");
+//                    request.setType(schema == null ? " " : schema.get("type").toString());
+                    request.setParamType("body");
+
+                    Object ref = schema.get("$ref");
+
+                    if (schema.get("type") != null && "array".equals(schema.get("type"))) {
+                        ref = ((Map) schema.get("items")).get("$ref");
+                        request.setType("array");
+                    }
+                    if (ref != null) {
+//                        request.setType(request.getType() + ":" + ref.toString().replaceAll("#/definitions/", ""));
+                        request.setType("object");
+                        request.setModelAttr(definitinMap.get(ref));
+                    }
+                    if (schema.get("properties") != null) {
+                        ArrayList<String> requiredArr = new ArrayList<String>();
+                        if (schema.get("required") != null) {
+                            requiredArr = (ArrayList<String>) schema.get("required");
+                        }
+                        request.setModelAttr(getRequestSchemaModelAttr(schema, requiredArr));
+                    }
+
+                    // 是否必填
+                    request.setRequire(true);
+
+                    // 参数说明
+                    requestList.add(request);
+                }
+            }
+        }
         return requestList;
     }
 
@@ -279,7 +324,7 @@ public class WordServiceImpl implements WordService {
      * @param responses 全部状态码返回对象
      * @return
      */
-    private List<Response> processResponseCodeList(Map<String, Object> responses) {
+    private List<Response> processResponseCodeList(Map<String, Object> responses,  Map<String, ModelAttr> definitinMap ) {
         List<Response> responseList = new ArrayList<>();
         Iterator<Map.Entry<String, Object>> resIt = responses.entrySet().iterator();
         while (resIt.hasNext()) {
@@ -307,6 +352,15 @@ public class WordServiceImpl implements WordService {
                         responseList.add(response);
                     }
                 }
+            } else {
+            	String ref = String.valueOf(statusCodeInfo.get("$ref"));
+
+                if (ref != "") {
+                	ModelAttr modelAttr = definitinMap.get(ref);
+                	response.setDescription(modelAttr.getDescription());
+                }
+
+                responseList.add(response);
             }
         }
         return responseList;
@@ -364,19 +418,41 @@ public class WordServiceImpl implements WordService {
     }
 
     /**
-     * 解析Definition
+     * 解析components
      *
      * @param map
      * @return
      */
-    private Map<String, ModelAttr> parseDefinitions(Map<String, Object> map) {
-        Map<String, Map<String, Object>> definitions = (Map<String, Map<String, Object>>) map.get("definitions");
+    private Map<String, ModelAttr> parseComponents(Map<String, Object> map) {
+        Map<String, Object> definitions = (Map<String, Object>) map.get("components");
         Map<String, ModelAttr> definitinMap = new HashMap<>(256);
         if (definitions != null) {
             Iterator<String> modelNameIt = definitions.keySet().iterator();
+            /**
+                "components": {
+                    "requestBodies": {},
+                    "schemas": {}
+                }
+            */
             while (modelNameIt.hasNext()) {
                 String modeName = modelNameIt.next();
-                getAndPutModelAttr(definitions, definitinMap, modeName);
+                /**
+                    "schemas": {
+                        "cat":{},
+                        "dog":{},
+                    }
+                 */
+                Map<String, Map<String, Object>> modeContent = (Map<String, Map<String, Object>>)definitions.get(modeName);
+
+                if (modeContent != null) {
+                    Iterator<String> modeContentIt = modeContent.keySet().iterator();
+
+                    while (modeContentIt.hasNext()) {
+                        String componentsGrandChildName = modeContentIt.next();
+
+                        getAndPutModelAttr(modeContent, definitinMap, modeName, componentsGrandChildName);
+                    }
+                }
             }
         }
         return definitinMap;
@@ -386,15 +462,74 @@ public class WordServiceImpl implements WordService {
      * 递归生成ModelAttr
      * 对$ref类型设置具体属性
      */
-    private ModelAttr getAndPutModelAttr(Map<String, Map<String, Object>> swaggerMap, Map<String, ModelAttr> resMap, String modeName) {
+    private ModelAttr getAndPutModelAttr(Map<String, Map<String, Object>> swaggerMap, Map<String, ModelAttr> resMap,  String parentName, String modeName) {
         ModelAttr modeAttr;
-        if ((modeAttr = resMap.get("#/definitions/" + modeName)) == null) {
+        if ((modeAttr = resMap.get("#/components/" + parentName + "/" + modeName)) == null) {
             modeAttr = new ModelAttr();
-            resMap.put("#/definitions/" + modeName, modeAttr);
-        } else if (modeAttr.isCompleted()) {
-            return resMap.get("#/definitions/" + modeName);
+            resMap.put("#/components/" + parentName + "/" + modeName, modeAttr);
+        } else if (resMap.get("#/components/" + parentName + "/" + modeName) != null) {
+            return resMap.get("#/components/" + parentName + "/" + modeName);
         }
         Map<String, Object> modeProperties = (Map<String, Object>) swaggerMap.get(modeName).get("properties");
+        List<ModelAttr> attrList = new ArrayList<>();
+        
+        if (modeProperties != null) {
+        	Iterator<Entry<String, Object>> mIt = modeProperties.entrySet().iterator();
+
+            //解析属性
+            while (mIt.hasNext()) {
+                Entry<String, Object> mEntry = mIt.next();
+                Map<String, Object> attrInfoMap = (Map<String, Object>) mEntry.getValue();
+                ModelAttr child = new ModelAttr();
+                child.setName(mEntry.getKey());
+                child.setType((String) attrInfoMap.get("type"));
+                if (attrInfoMap.get("format") != null) {
+                    child.setType(child.getType() + "(" + attrInfoMap.get("format") + ")");
+                }
+                child.setType(StringUtils.defaultIfBlank(child.getType(), "object"));
+
+                Object ref = attrInfoMap.get("$ref");
+                Object items = attrInfoMap.get("items");
+                if (ref != null || (items != null && (ref = ((Map) items).get("$ref")) != null)) {
+                    String refName = ref.toString();
+                    //截取 #/components/ 后面的
+                    String clsName = refName.substring(21);
+                    ModelAttr refModel = getAndPutModelAttr(swaggerMap, resMap, parentName, clsName);
+                    if (refModel != null) {
+                        child.setProperties(refModel.getProperties());
+                    }
+                    child.setType(child.getType() + ":" + clsName);
+                }
+                child.setDescription((String) attrInfoMap.get("description"));
+                attrList.add(child);
+            }
+        }
+        
+        Object title = swaggerMap.get(modeName).get("title");
+        Object description = swaggerMap.get(modeName).get("description");
+        modeAttr.setClassName(title == null ? "" : title.toString());
+        modeAttr.setDescription(description == null ? "" : description.toString());
+        modeAttr.setProperties(attrList);
+        return modeAttr;
+    }
+
+    /**
+     * 递归生成ModelAttr
+     * 处理schema对象
+     * 处理requestBody直接返回属性值情况
+     */
+    private ModelAttr getRequestSchemaModelAttr(Map<String, Object> schemaMap, ArrayList requiredArr) {
+        ModelAttr modeAttr = new ModelAttr();
+        Map<String, Object> modeProperties = (Map<String, Object>) schemaMap.get("properties");
+
+        if ("array".equals(schemaMap.get("type"))) {
+            Map items = (Map<String, Object>) schemaMap.get("items");
+
+            if (items != null) {
+                modeProperties = (Map<String, Object>) items.get("properties");
+            }
+        }
+
         if (modeProperties == null) {
             return null;
         }
@@ -413,26 +548,29 @@ public class WordServiceImpl implements WordService {
             }
             child.setType(StringUtils.defaultIfBlank(child.getType(), "object"));
 
+            Object properties = attrInfoMap.get("properties");
             Object ref = attrInfoMap.get("$ref");
             Object items = attrInfoMap.get("items");
-            if (ref != null || (items != null && (ref = ((Map) items).get("$ref")) != null)) {
-                String refName = ref.toString();
-                //截取 #/definitions/ 后面的
-                String clsName = refName.substring(14);
-                modeAttr.setCompleted(true);
-                ModelAttr refModel = getAndPutModelAttr(swaggerMap, resMap, clsName);
+            if (properties != null || (items != null)) {
+                ArrayList<String> childRequiredArr = new ArrayList<String>();
+                if (attrInfoMap.get("required") != null) {
+                	childRequiredArr = (ArrayList<String>) attrInfoMap.get("required");
+                }
+                ModelAttr refModel = getRequestSchemaModelAttr(attrInfoMap, childRequiredArr);
                 if (refModel != null) {
                     child.setProperties(refModel.getProperties());
                 }
-                child.setType(child.getType() + ":" + clsName);
+                child.setType((String) attrInfoMap.get("type"));
+            }
+            child.setRequire(true);
+            if (!requiredArr.contains(mEntry.getKey())) {
+                child.setRequire(false);
             }
             child.setDescription((String) attrInfoMap.get("description"));
             attrList.add(child);
         }
-        Object title = swaggerMap.get(modeName).get("title");
-        Object description = swaggerMap.get(modeName).get("description");
-        modeAttr.setClassName(title == null ? "" : title.toString());
-        modeAttr.setDescription(description == null ? "" : description.toString());
+        modeAttr.setClassName("");
+        modeAttr.setDescription("");
         modeAttr.setProperties(attrList);
         return modeAttr;
     }
@@ -466,6 +604,7 @@ public class WordServiceImpl implements WordService {
             Map<String, Object> attrInfoMap = (Map<String, Object>) mEntry.getValue();
             ModelAttr child = new ModelAttr();
             child.setName(mEntry.getKey());
+
             child.setType((String) attrInfoMap.get("type"));
             if (attrInfoMap.get("format") != null) {
                 child.setType(child.getType() + "(" + attrInfoMap.get("format") + ")");
@@ -533,8 +672,8 @@ public class WordServiceImpl implements WordService {
                             }
                         }
 
-                        // if (schema.get("properties") != null) {
-                        if (schema.get("properties") != null) {
+                        // if (schema.get("examples") != null) {
+                       if (schema.get("properties") != null) {
         //                    Map<String, Object> responseMap = new HashMap<>(8);
                             ModelAttr modelAttr = getSchemaModelAttr(schema);
                             if (modelAttr != null) {
@@ -546,6 +685,37 @@ public class WordServiceImpl implements WordService {
                             }
         //                }
                         }
+                    }
+                }
+            }
+        }
+        return StringUtils.EMPTY;
+    }
+
+    private String processResponseParam1(Map<String, Object> responseObj, Map<String, ModelAttr> definitinMap) throws JsonProcessingException {
+        Map<String, Map> content = (Map)responseObj.get("content");
+        // if (responseObj != null && content.get("application/json") != null) {
+        if (content != null ) {
+            Iterator<Map.Entry<String, Map>> applications = content.entrySet().iterator();
+            while (applications.hasNext()) {
+                Map.Entry<String, Map> application = applications.next();
+
+                if (application.getValue() != null) {
+                    Map<String,  Map<String, Map>> applicationContent = (Map<String, Map<String, Map>>) application.getValue();
+                    if (applicationContent != null) {
+                        Map<String, Map> examples = (Map<String, Map>) applicationContent.get("examples");
+
+                        if (examples != null) {
+                        	Map<String, Object> responseData = examples.get("response");
+
+                        	if (responseData != null) {
+                        		Object value = responseData.get("value");
+                        		return JsonUtils.writeJsonStr(value);
+                        	}
+                        } else {
+                        	return "";
+                        }
+
                     }
                 }
             }
@@ -575,6 +745,9 @@ public class WordServiceImpl implements WordService {
                     case "query":
                         queryMap.put(name, value);
                         break;
+                    case "path":
+                        queryMap.put(name, value);
+                        break;
                     case "body":
                         //TODO 根据content-type序列化成不同格式，目前只用了json
                         jsonMap.put(name, value);
@@ -595,10 +768,10 @@ public class WordServiceImpl implements WordService {
         if (!jsonMap.isEmpty()) {
             if (jsonMap.size() == 1) {
                 for (Entry<String, Object> entry : jsonMap.entrySet()) {
-                    res += " -d '" + JsonUtils.writeJsonStr(entry.getValue()) + "'";
+                    res += " '" + JsonUtils.writeJsonStr(entry.getValue()) + "'";
                 }
             } else {
-                res += " -d '" + JsonUtils.writeJsonStr(jsonMap) + "'";
+                res += " '" + JsonUtils.writeJsonStr(jsonMap) + "'";
             }
         }
         return res;

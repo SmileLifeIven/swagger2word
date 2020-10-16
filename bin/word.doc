@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="application/msword; charset=utf-8"/>
+    <title>toWord</title>
+    <style type="text/css">
+        .bg {
+            color: #fff;
+            background-color: #559e68;
+        }
+
+        table {
+            border: 1px solid #dbe3e4;
+            table-layout: fixed;
+        }
+
+        tr {
+            height: 32px;
+            font-size: 12px;
+        }
+
+        td {
+            padding: 0px 5px 0px 5px;
+            border: 1px solid #dbe3e4;
+            height: 32px;
+            overflow: hidden;
+            word-break: break-all;
+            word-wrap: break-word;
+            font-size: 14px;
+        }
+
+        .specialHeight {
+            height: 40px;
+        }
+
+        .first_title {
+            height: 60px;
+            line-height: 60px;
+            margin: 0;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .second_title {
+            height: 40px;
+            line-height: 40px;
+            margin: 0;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .doc_title {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .download_btn {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+<div style="width:1000px; margin: 0 auto">
+    <div>
+        <p class="doc_title">Swagger Petstore（1.0.5）</p>
+
+        <br>
+    </div>
+    <div style="margin-bottom:20px;">
+        <!--这个是类的说明-->
+        <h4 class="first_title">pet</h4>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+
+            <h5 class="second_title">1）uploadFile</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">uploadFile</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/pet/{petId}/uploadImage</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">post</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4">multipart/form-data</td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.petId</td>
+                        <td>integer(int64)</td>
+                        <td>path</td>
+                        <td>Y</td>
+
+                        <td>ID of pet to update</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+
+
+
+                    <tr align="center">
+                        <td align="left">2.additionalMetadata</td>
+                        <td>string</td>
+                        <td>formData</td>
+
+                        <td>N</td>
+                        <td>Additional data to pass to server</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+
+
+
+                    <tr align="center">
+                        <td align="left">3.file</td>
+                        <td>file</td>
+                        <td>formData</td>
+
+                        <td>N</td>
+                        <td>file to upload</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>200</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.code</td>
+            <td colspan="2">integer(int32)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">2.type</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">3.message</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4">{&quot;code&quot;:0,&quot;type&quot;:&quot;string&quot;,&quot;message&quot;:&quot;string&quot;}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">2）addPet</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">addPet</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/pet</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">post,put</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.body</td>
+                        <td>object:Pet</td>
+                        <td>body</td>
+                        <td>Y</td>
+
+                        <td>Pet object that needs to be added to the store</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+                        <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.1.id</td>
+            <td>integer(int64)</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.2.category</td>
+            <td>object:Category</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">1.2.1.id</td>
+            <td>integer(int64)</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">1.2.2.name</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.3.name</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.4.photoUrls</td>
+            <td>array</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.5.tags</td>
+            <td>array:Tag</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">1.5.1.id</td>
+            <td>integer(int64)</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">1.5.2.name</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.6.status</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td>pet status in the store</td>
+        </tr>
+
+
+</tbody>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>405</td>
+                    <td colspan="2">Invalid input</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"> -d &#39;{&quot;id&quot;:0,&quot;category&quot;:{&quot;id&quot;:0,&quot;name&quot;:&quot;string&quot;},&quot;name&quot;:&quot;string&quot;,&quot;photoUrls&quot;:[{}],&quot;tags&quot;:[{&quot;id&quot;:0,&quot;name&quot;:&quot;string&quot;}],&quot;status&quot;:&quot;string&quot;}&#39;</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4"></td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">3）findPetsByStatus</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">findPetsByStatus</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4">Multiple status values can be provided with comma separated strings</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/pet/findByStatus</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">get</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.status</td>
+                        <td>array</td>
+                        <td>query</td>
+                        <td>Y</td>
+
+                        <td>Status values that need to be considered for filter</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>200</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr align="center">
+                    <td>400</td>
+                    <td colspan="2">Invalid status value</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">2.category</td>
+            <td colspan="2">object:Category</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">2.1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">2.2.name</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">3.name</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">4.photoUrls</td>
+            <td colspan="2">array</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">5.tags</td>
+            <td colspan="2">array:Tag</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">5.1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">5.2.name</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">6.status</td>
+            <td colspan="2">string</td>
+            <td colspan="2">pet status in the store</td>
+        </tr>
+
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4">status=[{}]</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4">{&quot;name&quot;:&quot;string&quot;,&quot;id&quot;:0,&quot;photoUrls&quot;:[{}],&quot;category&quot;:{&quot;id&quot;:0,&quot;name&quot;:&quot;string&quot;},&quot;tags&quot;:[{&quot;id&quot;:0,&quot;name&quot;:&quot;string&quot;}],&quot;status&quot;:&quot;string&quot;}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">4）findPetsByTags</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">findPetsByTags</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4">Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/pet/findByTags</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">get</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.tags</td>
+                        <td>array</td>
+                        <td>query</td>
+                        <td>Y</td>
+
+                        <td>Tags to filter by</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>200</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr align="center">
+                    <td>400</td>
+                    <td colspan="2">Invalid tag value</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">2.category</td>
+            <td colspan="2">object:Category</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">2.1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">2.2.name</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">3.name</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">4.photoUrls</td>
+            <td colspan="2">array</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">5.tags</td>
+            <td colspan="2">array:Tag</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">5.1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">5.2.name</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">6.status</td>
+            <td colspan="2">string</td>
+            <td colspan="2">pet status in the store</td>
+        </tr>
+
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4">tags=[{}]</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4">{&quot;name&quot;:&quot;string&quot;,&quot;id&quot;:0,&quot;photoUrls&quot;:[{}],&quot;category&quot;:{&quot;id&quot;:0,&quot;name&quot;:&quot;string&quot;},&quot;tags&quot;:[{&quot;id&quot;:0,&quot;name&quot;:&quot;string&quot;}],&quot;status&quot;:&quot;string&quot;}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">5）getPetById</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">getPetById</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4">Returns a single pet</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/pet/{petId}</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">get,post,delete</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.petId</td>
+                        <td>integer(int64)</td>
+                        <td>path</td>
+                        <td>Y</td>
+
+                        <td>ID of pet to return</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>200</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr align="center">
+                    <td>400</td>
+                    <td colspan="2">Invalid ID supplied</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr align="center">
+                    <td>404</td>
+                    <td colspan="2">Pet not found</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">2.category</td>
+            <td colspan="2">object:Category</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">2.1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">2.2.name</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">3.name</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">4.photoUrls</td>
+            <td colspan="2">array</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">5.tags</td>
+            <td colspan="2">array:Tag</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">5.1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:20px">5.2.name</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">6.status</td>
+            <td colspan="2">string</td>
+            <td colspan="2">pet status in the store</td>
+        </tr>
+
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4">{&quot;name&quot;:&quot;string&quot;,&quot;id&quot;:0,&quot;photoUrls&quot;:[{}],&quot;category&quot;:{&quot;id&quot;:0,&quot;name&quot;:&quot;string&quot;},&quot;tags&quot;:[{&quot;id&quot;:0,&quot;name&quot;:&quot;string&quot;}],&quot;status&quot;:&quot;string&quot;}</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <div style="margin-bottom:20px;">
+        <!--这个是类的说明-->
+        <h4 class="first_title">store</h4>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+
+            <h5 class="second_title">1）placeOrder</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">placeOrder</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/store/order</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">post</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4">application/json</td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.body</td>
+                        <td>object:Order</td>
+                        <td>body</td>
+                        <td>Y</td>
+
+                        <td>order placed for purchasing the pet</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+                        <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.1.id</td>
+            <td>integer(int64)</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.2.petId</td>
+            <td>integer(int64)</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.3.quantity</td>
+            <td>integer(int32)</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.4.shipDate</td>
+            <td>string(date-time)</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.5.status</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td>Order Status</td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.6.complete</td>
+            <td>boolean</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+</tbody>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>200</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr align="center">
+                    <td>400</td>
+                    <td colspan="2">Invalid Order</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">2.petId</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">3.quantity</td>
+            <td colspan="2">integer(int32)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">4.shipDate</td>
+            <td colspan="2">string(date-time)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">5.status</td>
+            <td colspan="2">string</td>
+            <td colspan="2">Order Status</td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">6.complete</td>
+            <td colspan="2">boolean</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"> -d &#39;{&quot;id&quot;:0,&quot;petId&quot;:0,&quot;quantity&quot;:0,&quot;shipDate&quot;:&quot;2020/01/01 00:00:00&quot;,&quot;status&quot;:&quot;string&quot;,&quot;complete&quot;:true}&#39;</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4">{&quot;id&quot;:0,&quot;petId&quot;:0,&quot;quantity&quot;:0,&quot;shipDate&quot;:&quot;2020/01/01 00:00:00&quot;,&quot;complete&quot;:true,&quot;status&quot;:&quot;string&quot;}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">2）getOrderById</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">getOrderById</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4">For valid response try integer IDs with value &gt;= 1 and &lt;= 10. Other values will generated exceptions</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/store/order/{orderId}</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">get,delete</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.orderId</td>
+                        <td>integer(int64)</td>
+                        <td>path</td>
+                        <td>Y</td>
+
+                        <td>ID of pet that needs to be fetched</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>200</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr align="center">
+                    <td>400</td>
+                    <td colspan="2">Invalid ID supplied</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr align="center">
+                    <td>404</td>
+                    <td colspan="2">Order not found</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">2.petId</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">3.quantity</td>
+            <td colspan="2">integer(int32)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">4.shipDate</td>
+            <td colspan="2">string(date-time)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">5.status</td>
+            <td colspan="2">string</td>
+            <td colspan="2">Order Status</td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">6.complete</td>
+            <td colspan="2">boolean</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4">{&quot;id&quot;:0,&quot;petId&quot;:0,&quot;quantity&quot;:0,&quot;shipDate&quot;:&quot;2020/01/01 00:00:00&quot;,&quot;complete&quot;:true,&quot;status&quot;:&quot;string&quot;}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">3）getInventory</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">getInventory</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4">Returns a map of status codes to quantities</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/store/inventory</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">get</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>200</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4"></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <div style="margin-bottom:20px;">
+        <!--这个是类的说明-->
+        <h4 class="first_title">user</h4>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+
+            <h5 class="second_title">1）createUsersWithArrayInput</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">createUsersWithArrayInput</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/user/createWithArray</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">post</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4">application/json</td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.body</td>
+                        <td>array:User</td>
+                        <td>body</td>
+                        <td>Y</td>
+
+                        <td>List of user object</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+                        <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.1.id</td>
+            <td>integer(int64)</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.2.username</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.3.firstName</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.4.lastName</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.5.email</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.6.password</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.7.phone</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.8.userStatus</td>
+            <td>integer(int32)</td>
+            <td></td>
+
+            <td>N</td>
+            <td>User Status</td>
+        </tr>
+
+
+</tbody>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>default</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"> -d &#39;[{&quot;id&quot;:0,&quot;username&quot;:&quot;string&quot;,&quot;firstName&quot;:&quot;string&quot;,&quot;lastName&quot;:&quot;string&quot;,&quot;email&quot;:&quot;string&quot;,&quot;password&quot;:&quot;string&quot;,&quot;phone&quot;:&quot;string&quot;,&quot;userStatus&quot;:0}]&#39;</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4"></td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">2）createUsersWithListInput</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">createUsersWithListInput</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/user/createWithList</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">post</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4">application/json</td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.body</td>
+                        <td>array:User</td>
+                        <td>body</td>
+                        <td>Y</td>
+
+                        <td>List of user object</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+                        <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.1.id</td>
+            <td>integer(int64)</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.2.username</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.3.firstName</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.4.lastName</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.5.email</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.6.password</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.7.phone</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.8.userStatus</td>
+            <td>integer(int32)</td>
+            <td></td>
+
+            <td>N</td>
+            <td>User Status</td>
+        </tr>
+
+
+</tbody>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>default</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"> -d &#39;[{&quot;id&quot;:0,&quot;username&quot;:&quot;string&quot;,&quot;firstName&quot;:&quot;string&quot;,&quot;lastName&quot;:&quot;string&quot;,&quot;email&quot;:&quot;string&quot;,&quot;password&quot;:&quot;string&quot;,&quot;phone&quot;:&quot;string&quot;,&quot;userStatus&quot;:0}]&#39;</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4"></td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">3）getUserByName</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">getUserByName</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/user/{username}</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">get,put,delete</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.username</td>
+                        <td>string</td>
+                        <td>path</td>
+                        <td>Y</td>
+
+                        <td>The name that needs to be fetched. Use user1 for testing. </td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>200</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr align="center">
+                    <td>400</td>
+                    <td colspan="2">Invalid username supplied</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr align="center">
+                    <td>404</td>
+                    <td colspan="2">User not found</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.id</td>
+            <td colspan="2">integer(int64)</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">2.username</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">3.firstName</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">4.lastName</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">5.email</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">6.password</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">7.phone</td>
+            <td colspan="2">string</td>
+            <td colspan="2"></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">8.userStatus</td>
+            <td colspan="2">integer(int32)</td>
+            <td colspan="2">User Status</td>
+        </tr>
+
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4">{&quot;firstName&quot;:&quot;string&quot;,&quot;lastName&quot;:&quot;string&quot;,&quot;password&quot;:&quot;string&quot;,&quot;userStatus&quot;:0,&quot;phone&quot;:&quot;string&quot;,&quot;id&quot;:0,&quot;email&quot;:&quot;string&quot;,&quot;username&quot;:&quot;string&quot;}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">4）loginUser</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">loginUser</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/user/login</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">get</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.username</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Y</td>
+
+                        <td>The user name for login</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+
+
+
+                    <tr align="center">
+                        <td align="left">2.password</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Y</td>
+
+                        <td>The password for login in clear text</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>200</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr align="center">
+                    <td>400</td>
+                    <td colspan="2">Invalid username/password supplied</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4">username=string&amp;password=string</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4"></td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">5）logoutUser</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">logoutUser</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/user/logout</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">get</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>default</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4"></td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+
+            <!--这个是每个请求的说明，方便生成文档后进行整理-->
+            <br>
+            <h5 class="second_title">6）createUser</h5>
+
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                <tr class="bg">
+                    <td colspan="5">createUser</td>
+                </tr>
+                <tr>
+                    <td width="25%">接口描述</td>
+                    <td colspan="4">This can only be done by the logged in user.</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td colspan="4">/user</td>
+                </tr>
+                <tr>
+                    <td>请求方式</td>
+                    <td colspan="4">post</td>
+                </tr>
+                <tr>
+                    <td>请求类型</td>
+                    <td colspan="4">application/json</td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td colspan="4">application/json,application/xml</td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>参数名</td>
+                    <td>数据类型</td>
+                    <td>参数类型</td>
+                    <td>是否必填</td>
+                    <td>说明</td>
+                </tr>
+
+
+                    <tr align="center">
+                        <td align="left">1.body</td>
+                        <td>object:User</td>
+                        <td>body</td>
+                        <td>Y</td>
+
+                        <td>Created user object</td>
+                        <!--                        <td th:if="${request.modelAttr}" th:text="asdfagadfg"></td>-->
+                    </tr>
+
+                        <tbody>
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.1.id</td>
+            <td>integer(int64)</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.2.username</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.3.firstName</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.4.lastName</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.5.email</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.6.password</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.7.phone</td>
+            <td>string</td>
+            <td></td>
+
+            <td>N</td>
+            <td></td>
+        </tr>
+
+
+        <tr align="center">
+            <td align="left" style="padding-left:10px">1.8.userStatus</td>
+            <td>integer(int32)</td>
+            <td></td>
+
+            <td>N</td>
+            <td>User Status</td>
+        </tr>
+
+
+</tbody>
+
+
+
+
+
+                <tr class="bg" align="center">
+                    <td>状态码</td>
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+                <tr align="center">
+                    <td>default</td>
+                    <td colspan="2">successful operation</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr class="bg" align="center">
+                    <td>返回属性名</td>
+                    <td colspan="2">类型</td>
+                    <td colspan="2">说明</td>
+                </tr>
+
+<!--               对返回参数 递归生成行-->
+                <tbody>
+
+</tbody>
+
+                <tr class="bg">
+                    <td colspan="5">示例</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">请求参数</td>
+                    <td colspan="4"> -d &#39;{&quot;id&quot;:0,&quot;username&quot;:&quot;string&quot;,&quot;firstName&quot;:&quot;string&quot;,&quot;lastName&quot;:&quot;string&quot;,&quot;email&quot;:&quot;string&quot;,&quot;password&quot;:&quot;string&quot;,&quot;phone&quot;:&quot;string&quot;,&quot;userStatus&quot;:0}&#39;</td>
+                </tr>
+                <tr class="specialHeight">
+                    <td class="bg">返回值</td>
+                    <td colspan="4"></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>

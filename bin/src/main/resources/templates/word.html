@@ -144,14 +144,14 @@
 
                 <tr class="bg">
                     <td>状态码</td>
-                    <td colspan="4">描述</td>
-                    <!-- <td colspan="2">说明</td> -->
+                    <td colspan="2">描述</td>
+                    <td colspan="2">说明</td>
                 </tr>
 
                 <tr th:each="response:${table.responseList}">
                     <td th:text="${response.name}"></td>
-                    <td colspan="4" th:text="${response.description}"></td>
-                    <!-- <td colspan="2" th:text="${response.remark}"></td> -->
+                    <td colspan="2" th:text="${response.description}"></td>
+                    <td colspan="2" th:text="${response.remark}"></td>
                 </tr>
 
                 <tr class="bg">
